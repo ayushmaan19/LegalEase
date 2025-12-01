@@ -1,0 +1,333 @@
+/* --- Complete Redesign for Lawyer Dashboard --- */
+
+.wrapper {
+  width: 100%;
+  animation: fadeIn 0.5s ease-in-out;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- Welcome Banner --- */
+.welcomeBanner {
+  background: linear-gradient(90deg, #4f65f1 0%, #764cf1 100%);
+  border-radius: 0.75rem; /* 12px */
+  padding: 2rem 2.5rem; /* 32px 40px */
+  color: white;
+  margin-bottom: 2rem; /* 32px */
+}
+.bannerTitle {
+  font-size: 2rem; /* 32px */
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+}
+.bannerSubtitle {
+  font-size: 1rem; /* 16px */
+  margin: 0 0 1.5rem 0;
+  opacity: 0.9;
+}
+.bannerTags {
+  display: flex;
+  gap: 0.75rem; /* 12px */
+}
+.bannerTags span {
+  background-color: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 0.5rem 1rem; /* 8px 16px */
+  border-radius: 1.25rem; /* 20px */
+  font-size: 0.8125rem; /* 13px */
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* 8px */
+}
+.bannerTags svg {
+  font-size: 1rem; /* 16px */
+}
+
+/* --- 5-Column Stats Grid --- */
+.statsGrid {
+  display: grid;
+  /* Updated to 5 columns */
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.5rem; /* 24px */
+  margin-bottom: 2rem; /* 32px */
+}
+/* StatCard styles are in Dashboard.module.css, and they will adapt */
+
+/* --- Main 2-Column Layout --- */
+.mainLayout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1.5rem; /* 24px */
+}
+
+/* --- Main Content (Left Column) --- */
+.mainContent {
+  background-color: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.75rem; /* 12px */
+  padding: 1.5rem; /* 24px */
+}
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem; /* 24px */
+  padding-bottom: 1rem; /* 16px */
+  border-bottom: 1px solid #f1f5f9;
+}
+.cardHeader h2 {
+  font-size: 1.125rem; /* 18px */
+  font-weight: 600;
+  margin: 0;
+  color: #1a202c;
+}
+.viewAll {
+  color: #2a65f1;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.875rem; /* 14px */
+}
+.caseList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* 16px */
+}
+
+/* --- New Case Card --- */
+.newCaseCard {
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem; /* 8px */
+  padding: 1rem; /* 16px */
+  transition: box-shadow 0.2s;
+}
+.newCaseCard:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+.cardTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.5rem; /* 8px */
+}
+.caseTitle {
+  font-size: 1.125rem; /* 18px */
+  font-weight: 600;
+  color: #2d3748;
+  margin: 0;
+}
+.caseTag {
+  padding: 0.25rem 0.75rem; /* 4px 12px */
+  border-radius: 1rem; /* 16px */
+  font-weight: 500;
+  font-size: 0.75rem; /* 12px */
+}
+.tagMedium {
+  background-color: #fff0c7;
+  color: #8a6d3b;
+}
+.tagHigh {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+.tagLow {
+  background-color: #e8f5e9;
+  color: #155724;
+}
+
+.caseDescription {
+  font-size: 0.875rem; /* 14px */
+  color: #718096;
+  margin: 0 0 1rem 0;
+  line-height: 1.5;
+}
+.caseMeta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem; /* 12px */
+  font-size: 0.8125rem; /* 13px */
+  color: #4a5568;
+  margin-bottom: 1rem; /* 16px */
+}
+.caseMeta span {
+  display: flex;
+  align-items: center;
+}
+.caseAmount {
+  font-weight: 500;
+  color: #4caf50; /* Green for money */
+}
+.cardActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem; /* 12px */
+}
+.detailsBtn {
+  background-color: #f0f4ff;
+  color: #2a65f1;
+  padding: 0.5rem 1rem; /* 8px 16px */
+  border-radius: 0.5rem; /* 8px */
+  font-size: 0.875rem; /* 14px */
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* 8px */
+  transition: background-color 0.2s;
+}
+.detailsBtn:hover {
+  background-color: #e6efff;
+}
+.acceptBtn {
+  background-color: #2a65f1;
+  color: white;
+  padding: 0.5rem 1rem; /* 8px 16px */
+  border-radius: 0.5rem; /* 8px */
+  font-size: 0.875rem; /* 14px */
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+.acceptBtn:hover {
+  background-color: #1a54d1;
+}
+
+/* --- Right Sidebar --- */
+.rightSidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem; /* 24px */
+}
+.sidebarCard {
+  background-color: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.75rem; /* 12px */
+  padding: 1.5rem; /* 24px */
+}
+.sidebarTitle {
+  font-size: 1.125rem; /* 18px */
+  font-weight: 600;
+  margin: 0 0 1rem 0;
+  color: #1a202c;
+}
+
+/* Quick Actions Card */
+.actionList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem; /* 12px */
+}
+.actionLink {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem; /* 12px */
+  font-size: 0.9375rem; /* 15px */
+  color: #4a5568;
+  font-weight: 500;
+  padding: 0.75rem; /* 12px */
+  border-radius: 0.5rem; /* 8px */
+  transition: background-color 0.2s, color 0.2s;
+}
+.actionLink:hover {
+  background-color: #f7fafc;
+  color: #1a202c;
+}
+.actionPrimary {
+  background-color: #e6efff;
+  color: #2a65f1;
+  font-weight: 600;
+}
+.actionPrimary:hover {
+  background-color: #dbe7ff;
+  color: #2a65f1;
+}
+
+/* Active Cases Card */
+.activeCaseItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0.75rem 0;
+}
+.activeCaseInfo p {
+  font-weight: 500;
+  color: #2d3748;
+  margin: 0 0 0.25rem 0;
+}
+.activeCaseInfo span {
+  font-size: 0.8125rem; /* 13px */
+  color: #718096;
+}
+.activeCaseTag {
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  background-color: #f3e8fd;
+  color: #764cf1;
+}
+
+/* Performance Card */
+.performanceList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.performanceList li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9375rem; /* 15px */
+  color: #4a5568;
+  padding: 0.75rem 0;
+}
+.performanceList li strong {
+  font-weight: 600;
+  color: #1a202c;
+}
+
+/* --- Fallback Styles for old components (cleanup) --- */
+.wrapper .header {
+  display: none; /* Hide the old "Lawyer Dashboard" h1 */
+}
+.wrapper .requestList,
+.wrapper .caseList {
+  /* These styles are now part of the new components */
+}
+/* --- ADD THIS STYLE to LawyerDashboard.module.css --- */
+
+.declineBtn {
+  background-color: #f8d7da; /* Light red */
+  color: #721c24; /* Dark red */
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+.declineBtn:hover {
+  background-color: #f5c6cb;
+}
+/* --- ADD THIS STYLE to the bottom of the file --- */
+
+.declineBtn {
+  background-color: #f8d7da; /* Light red */
+  color: #721c24; /* Dark red */
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+.declineBtn:hover {
+  background-color: #f5c6cb;
+}

@@ -1,0 +1,299 @@
+.dashboardPage {
+  /* This parent is just a container */
+}
+
+/* --- Stats Grid --- */
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.statCard {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  align-items: center; /* Align icon and text */
+  gap: 16px;
+  border: 1px solid #e2e8f0;
+}
+
+.statIcon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%; /* Rounded icon background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.statInfo {
+  flex-grow: 1;
+}
+
+.statLabel {
+  font-size: 14px;
+  color: #718096;
+  margin: 0;
+}
+
+.statNumber {
+  font-size: 28px;
+  font-weight: 600;
+  color: #1a202c;
+  margin: 2px 0;
+}
+
+.statGrowth {
+  font-size: 13px;
+  font-weight: 500;
+  color: #4caf50;
+  margin: 0;
+}
+.statDetail {
+  font-size: 13px;
+  font-weight: 500;
+  color: #718096;
+  margin: 0;
+}
+
+/* --- Bottom Grid (Recent Cases & Quick Actions) --- */
+.bottomGrid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+}
+
+.mainCard,
+.quickActionsCard {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 24px;
+  border: 1px solid #e2e8f0;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.cardHeader h2 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+  color: #1a202c;
+}
+
+.viewAll {
+  color: #2a65f1;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+}
+.viewAll:hover {
+  text-decoration: underline;
+}
+
+/* No Cases Found styling */
+.noCases {
+  text-align: center;
+  padding: 40px 20px;
+}
+.noCasesIcon {
+  color: #cbd5e0;
+  margin-bottom: 16px;
+}
+.noCases h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 8px 0;
+  color: #2d3748;
+}
+.noCases p {
+  font-size: 14px;
+  color: #718096;
+  max-width: 350px;
+  margin: 0 auto 24px;
+}
+
+.createCaseButton {
+  background-color: #1a202c; /* Dark button */
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+.createCaseButton:hover {
+  background-color: #333;
+}
+
+/* Quick Actions List */
+.quickActionsCard h2 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 20px 0;
+  color: #1a202c;
+}
+
+.actionList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.actionLink {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 15px;
+  color: #4a5568;
+  font-weight: 500;
+  padding: 12px;
+  border-radius: 8px;
+  transition: background-color 0.2s, color 0.2s;
+}
+.actionLink:hover {
+  background-color: #f7fafc;
+  color: #1a202c;
+}
+
+.actionPrimary {
+  background-color: #e6efff;
+  color: #2a65f1;
+  font-weight: 600;
+}
+.actionPrimary:hover {
+  background-color: #dbe7ff;
+  color: #2a65f1;
+}
+/* --- ADD THESE STYLES to Dashboard.module.css --- */
+/* (You may already have these from a previous step, but adding again is safe) */
+
+.recentCasesList {
+  display: flex;
+  flex-direction: column;
+}
+
+.caseRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+.caseRow:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+.caseRow:first-child {
+  padding-top: 0;
+}
+
+.caseRowInfo h4 {
+  font-size: 0.9375rem; /* 15px */
+  font-weight: 500;
+  color: #2d3748;
+  margin: 0 0 0.25rem 0;
+}
+.caseRowInfo span {
+  font-size: 0.8125rem; /* 13px */
+  color: #718096;
+}
+
+.caseStatus {
+  padding: 0.25rem 0.75rem; /* 4px 12px */
+  border-radius: 1rem; /* 16px */
+  font-weight: 500;
+  font-size: 0.75rem; /* 12px */
+}
+
+/* Status colors */
+.pending {
+  background-color: #fff0c7;
+  color: #8a6d3b;
+}
+.inprogress {
+  background-color: #cce5ff;
+  color: #004085;
+}
+.assigned {
+  background-color: #e6e6fa;
+  color: #6a5acd;
+}
+.resolved {
+  background-color: #d4edda;
+  color: #155724;
+}
+/* --- ADD THESE STYLES TO THE BOTTOM of LawyerDashboard.module.css --- */
+
+/* Make actionLink buttons work as Links */
+.actionLink {
+  width: 100%;
+  box-sizing: border-box; /* Ensure padding doesn't break width */
+}
+
+/* Placeholder text for empty sidebar cards */
+.sidebarPlaceholder {
+  font-size: 0.875rem; /* 14px */
+  color: #718096;
+  text-align: center;
+  padding: 1rem 0;
+}
+/* --- ADD THIS STYLE to Dashboard.module.css --- */
+
+.chatsTitle {
+  font-size: 1.125rem; /* 18px */
+  font-weight: 600;
+  color: #1a202c;
+  margin: 1.5rem 0 1rem 0; /* Add space above */
+  padding-top: 1.5rem; /* Add divider line */
+  border-top: 1px solid #f1f5f9;
+}
+
+.notificationBadge {
+  background-color: #d9534f;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.15rem 0.5rem;
+  border-radius: 1rem;
+  margin-left: auto;
+}
+
+.actionLink {
+  width: 100%; /* Make sure links fill the space */
+  box-sizing: border-box;
+}
+/* --- ADD THESE STYLES to Dashboard.module.css --- */
+
+.chatsTitle {
+  font-size: 1.125rem; /* 18px */
+  font-weight: 600;
+  color: #1a202c;
+  margin: 1.5rem 0 1rem 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid #f1f5f9;
+}
+
+.notificationBadge {
+  background-color: #d9534f;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.15rem 0.5rem;
+  border-radius: 1rem;
+  margin-left: auto;
+}

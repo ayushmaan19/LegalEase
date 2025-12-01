@@ -1,0 +1,255 @@
+.wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.pageTitle {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #1a202c;
+  margin: 0;
+}
+
+.pageSubtitle {
+  font-size: 1rem;
+  color: #718096;
+  margin: 0.25rem 0 2rem 0;
+}
+
+.settingsCard {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.cardTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #2d3748;
+  padding: 1.5rem;
+  border-bottom: 1px solid #f1f5f9;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.cardTitle svg {
+  color: #2a65f1;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  padding: 1.5rem;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.formGroup label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #4a5568;
+  margin-bottom: 0.5rem;
+}
+
+.formInput {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ccd0d5;
+  border-radius: 0.5rem;
+  font-size: 0.9375rem;
+  color: #2d3748;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+}
+
+.formInput:disabled {
+  background-color: #f7fafc;
+  color: #718096;
+  cursor: not-allowed;
+}
+
+.formInput:focus {
+  outline: none;
+  border-color: #2a65f1;
+  box-shadow: 0 0 0 3px rgba(42, 101, 241, 0.2);
+}
+
+.cardFooter {
+  background-color: #f7f9fc;
+  border-top: 1px solid #f1f5f9;
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  border-bottom-left-radius: 0.75rem;
+  border-bottom-right-radius: 0.75rem;
+}
+
+.submitButton {
+  background-color: #2a65f1;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+.submitButton:hover {
+  background-color: #1a54d1;
+}
+
+/* --- Danger Zone --- */
+.dangerZone {
+  border-color: #f5c6cb;
+}
+.dangerZone .cardTitle {
+  color: #721c24;
+}
+.dangerZone .cardTitle svg {
+  color: #d9534f;
+}
+
+.dangerContent {
+  padding: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.dangerContent p {
+  margin: 0;
+  color: #721c24;
+  line-height: 1.5;
+}
+.dangerContent p strong {
+  font-weight: 600;
+}
+
+.deleteButton {
+  background-color: #d9534f;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  transition: background-color 0.2s;
+  flex-shrink: 0;
+}
+.deleteButton:hover {
+  background-color: #c9302c;
+}
+
+/* --- Responsive adjustments --- */
+@media (max-width: 768px) {
+  .formGrid {
+    grid-template-columns: 1fr;
+  }
+  .dangerContent {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+}
+
+/* --- Textarea, Checkbox, etc. --- */
+.formTextarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ccd0d5;
+  border-radius: 0.5rem;
+  font-size: 0.9375rem;
+  color: #2d3748;
+  font-family: inherit;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+  resize: vertical;
+  min-height: 100px;
+}
+.formTextarea:focus {
+  outline: none;
+  border-color: #2a65f1;
+  box-shadow: 0 0 0 3px rgba(42, 101, 241, 0.2);
+}
+
+.formGroup small {
+  margin-top: 0.5rem;
+  font-size: 0.8125rem;
+  color: #718096;
+}
+
+.checkboxWrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ccd0d5;
+  border-radius: 0.5rem;
+  background-color: #fff;
+  cursor: pointer;
+}
+.checkboxWrapper input[type="checkbox"] {
+  width: 1.15em;
+  height: 1.15em;
+  accent-color: #2a65f1;
+}
+.checkboxWrapper span {
+  font-size: 0.9375rem;
+  color: #2d3748;
+}
+
+/* --- Status Messages --- */
+.successMsg {
+  color: #155724; /* Green */
+  font-weight: 500;
+  margin-right: 1rem;
+}
+.errorMsg {
+  color: #721c24; /* Red */
+  font-weight: 500;
+  margin-right: 1rem;
+}
+
+/* KYC Status Display */
+.statusDisplay {
+  padding: 2rem;
+  text-align: center;
+}
+.verificationStatus {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+.statusDisplay p {
+  font-size: 1rem;
+  color: #718096;
+  margin: 0;
+}
+.verified {
+  background-color: #d4edda;
+  color: #155724;
+}
+.pending {
+  background-color: #fff0c7;
+  color: #8a6d3b;
+}
+
+/* REMOVED .fileInput and .fileInputLabel */

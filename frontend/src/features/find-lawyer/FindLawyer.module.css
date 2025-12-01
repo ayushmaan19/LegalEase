@@ -1,0 +1,189 @@
+.pageWrapper {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.header {
+  margin-bottom: 24px;
+}
+.header h1 {
+  margin: 0;
+  font-size: 28px;
+}
+.header p {
+  margin: 4px 0 0 0;
+  color: #718096;
+}
+
+/* Filter Bar */
+.filters {
+  background-color: #fff;
+  padding: 16px 24px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+.searchInput,
+.filterSelect {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+/* Results Area */
+.resultsHeader {
+  margin-bottom: 16px;
+  color: #555;
+  font-weight: 500;
+}
+
+.resultsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 24px;
+}
+
+/* Lawyer Card */
+.lawyerCard {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.lawyerCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #e6efff;
+  color: #2a65f1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.2em;
+  flex-shrink: 0;
+}
+.nameAndStatus h4 {
+  margin: 0 0 4px 0;
+}
+.statusTags {
+  display: flex;
+  gap: 8px;
+}
+
+.tag {
+  padding: 4px 10px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 500;
+}
+.available {
+  background-color: #d4edda;
+  color: #155724;
+}
+.verified {
+  background-color: #cce5ff;
+  color: #004085;
+}
+
+.cardBody {
+  flex-grow: 1;
+  color: #555;
+  font-size: 14px;
+}
+.infoRow {
+  display: flex;
+  margin-bottom: 8px;
+}
+.infoLabel {
+  width: 120px;
+  font-weight: 500;
+  color: #333;
+}
+.specialtyTag {
+  background-color: #f1f1f1;
+  padding: 4px 8px;
+  border-radius: 4px;
+  margin-right: 6px;
+  font-size: 13px;
+}
+
+.cardFooter {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #e2e8f0;
+  display: flex;
+  gap: 12px;
+}
+.contactBtn,
+.viewProfileBtn {
+  flex: 1;
+  text-decoration: none;
+  text-align: center;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+.contactBtn {
+  background-color: #2a65f1;
+  color: white;
+  border-color: #2a65f1;
+}
+.contactBtn:hover {
+  background-color: #1a54d1;
+}
+.viewProfileBtn {
+  background-color: #fff;
+  color: #333;
+}
+.viewProfileBtn:hover {
+  background-color: #f7fafc;
+}
+/* --- ADD THESE STYLES to the bottom of your CSS file --- */
+
+/* New tag for Pro Bono */
+.proBono {
+  background-color: #e8f5e9; /* Light green */
+  color: #155724;
+}
+
+/* Error message style */
+.errorText {
+  color: #721c24; /* Dark red */
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-align: center;
+  padding: 2rem;
+}

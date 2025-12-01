@@ -1,0 +1,130 @@
+.wrapper {
+  animation: fadeIn 0.5s ease-in-out;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.pageTitle {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #1a202c;
+  margin: 0;
+}
+.pageSubtitle {
+  font-size: 1rem;
+  color: #718096;
+  margin: 0.25rem 0 2rem 0;
+}
+
+.scheduleLayout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1.5rem; /* 24px */
+}
+
+.calendarContainer {
+  background-color: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  /* Set an aspect ratio to prevent content shift */
+  aspect-ratio: 1.5 / 1; 
+}
+
+/* --- THIS IS THE FIX for custom colors --- */
+/* We use :global to override the library's default styles */
+:global(.rbc-event) {
+  background-color: #2a65f1 !important;
+  border: 1px solid #1a54d1 !important;
+}
+:global(.rbc-event.rbc-selected) {
+  background-color: #1a54d1 !important;
+}
+/* --- END OF FIX --- */
+
+/* --- Form Card --- */
+.formContainer {
+  align-self: flex-start;
+}
+
+.formCard {
+  background-color: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+}
+
+.formTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1a202c;
+  margin: 0 0 1.5rem 0;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+.formGroup label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #4a5568;
+  margin-bottom: 0.5rem;
+}
+.formInput {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ccd0d5;
+  border-radius: 0.5rem;
+  font-size: 0.9375rem;
+  color: #2d3748;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+.formInput:focus {
+  outline: none;
+  border-color: #2a65f1;
+  box-shadow: 0 0 0 3px rgba(42, 101, 241, 0.2);
+}
+
+.timeGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.submitButton {
+  background-color: #2a65f1;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  width: 100%;
+  margin-top: 1rem;
+  transition: background-color 0.2s;
+}
+.submitButton:hover {
+  background-color: #1a54d1;
+}
+
+.errorText, .successText {
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+.errorText {
+  color: #721c24;
+  background-color: #f8d7da;
+}
+.successText {
+  color: #155724;
+  background-color: #d4edda;
+}

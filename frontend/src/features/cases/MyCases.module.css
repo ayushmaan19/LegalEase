@@ -1,0 +1,317 @@
+.pageWrapper {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end; /* Align items to the bottom */
+  margin-bottom: 32px;
+}
+
+.header h1 {
+  font-size: 28px;
+  margin: 0;
+  color: #1a202c;
+}
+
+.header p {
+  margin: 4px 0 0 0;
+  color: #718096;
+}
+
+.newCaseBtn {
+  background-color: #2a65f1;
+  color: white;
+  text-decoration: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background-color 0.2s;
+}
+
+.newCaseBtn:hover {
+  background-color: #1a54d1;
+}
+
+/* Tab Navigation */
+.tabs {
+  display: flex;
+  gap: 8px;
+  border-bottom: 1px solid #e2e8f0;
+  margin-bottom: 32px;
+}
+
+.tab {
+  padding: 10px 20px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  color: #718096;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.tab:hover {
+  color: #2d3748;
+}
+
+.activeTab {
+  color: #2a65f1;
+  border-bottom-color: #2a65f1;
+}
+
+/* Content Area */
+.contentArea {
+  background-color: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 32px; /* Adjusted padding for a cleaner look */
+}
+
+/* Empty State */
+.emptyState {
+  text-align: center;
+  padding: 40px 20px;
+}
+.emptyStateIcon {
+  width: 100px;
+  margin-bottom: 24px;
+}
+.emptyState h4 {
+  margin: 0 0 8px 0;
+  font-size: 20px;
+  color: #2d3748;
+}
+.emptyState p {
+  margin: 0 0 24px 0;
+  color: #718096;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.fileNewCaseBtn {
+  background-color: #1a202c;
+  color: white;
+  text-decoration: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: background-color 0.2s;
+}
+.fileNewCaseBtn:hover {
+  background-color: #333;
+}
+
+/* --- NEW & UPDATED STYLES FOR CASE LIST AND CASE CARD --- */
+
+.caseList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.caseCard {
+  background-color: #fff; /* Changed to white as in Image 2 */
+  border: 1px solid #e2e8f0;
+  border-radius: 12px; /* Slightly more rounded */
+  padding: 20px 24px; /* Adjusted padding */
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* Align items to the top */
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.caseCard:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08); /* More prominent shadow on hover */
+  border-color: #a0c2fd; /* Slight blue border on hover */
+}
+
+.caseLeftContent {
+  flex-grow: 1;
+  margin-right: 24px; /* Space between left and right content */
+}
+
+.caseTitle {
+  margin: 0 0 4px 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #2d3748;
+}
+
+.caseDescription {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #718096;
+}
+
+.caseMeta {
+  display: flex;
+  flex-wrap: wrap; /* Allow items to wrap */
+  align-items: center;
+  gap: 16px; /* Space between meta items */
+  font-size: 13px;
+  color: #718096;
+}
+
+.metaItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.metaValue {
+  font-weight: 500;
+  color: #333;
+}
+
+.bulletPoint {
+  width: 4px;
+  height: 4px;
+  background-color: #718096;
+  border-radius: 50%;
+  margin-right: 2px;
+}
+
+.caseRightContent {
+  flex-shrink: 0; /* Don't allow it to shrink */
+  text-align: right;
+  padding-top: 4px; /* Align status tag with title */
+}
+
+.caseStatus {
+  padding: 6px 12px;
+  border-radius: 16px;
+  font-weight: 600; /* Bolder status text */
+  font-size: 13px;
+  display: inline-block; /* Ensure padding and border work */
+  min-width: 80px; /* Give a minimum width for consistency */
+  text-align: center;
+}
+
+.statusPending {
+  background-color: #fff0c7;
+  color: #8a6d3b;
+} /* Yellowish */
+.statusInProgress {
+  background-color: #cce5ff;
+  color: #004085;
+} /* Bluish */
+.statusAssigned {
+  background-color: #e6e6fa;
+  color: #6a5acd;
+} /* Light purple, new */
+.statusResolved {
+  background-color: #d4edda;
+  color: #155724;
+} /* Greenish */
+
+.viewDetailsBtn {
+  /* Optional, if you decide to add a button here */
+  margin-top: 12px;
+  display: inline-block;
+  background-color: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+.viewDetailsBtn:hover {
+  background-color: #e0e0e0;
+}
+/* Add this to frontend/src/features/cases/MyCases.module.css */
+/* .caseCardLink {
+  text-decoration: none;
+} */
+/* --- ADD THIS STYLE to MyCases.module.css --- */
+
+.completeButton {
+  background-color: #d4edda;
+  color: #155724;
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  transition: background-color 0.2s;
+}
+.completeButton:hover {
+  background-color: #c3e6cb;
+}
+/* --- ADD THIS STYLE to the bottom of the file --- */
+
+.completeButton {
+  background-color: #d4edda;
+  color: #155724;
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  transition: background-color 0.2s;
+}
+.completeButton:hover {
+  background-color: #c3e6cb;
+}
+/* --- ADD THIS STYLE to MyCases.module.css --- */
+
+.clickableCard {
+  cursor: pointer;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.clickableCard:hover {
+  box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+  border-color: #a0c2fd;
+}
+/* --- ADD THIS STYLE to MyCases.module.css --- */
+
+.startButton {
+  background-color: #cce5ff; /* Light blue */
+  color: #004085; /* Dark blue */
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  transition: background-color 0.2s;
+}
+.startButton:hover {
+  background-color: #b8daff;
+}
+/* Remove the old .caseCardLink style if it exists */
+/* .caseCardLink {
+  text-decoration: none;
+} 
+*/

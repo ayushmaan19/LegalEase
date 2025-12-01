@@ -1,0 +1,219 @@
+.pageWrapper {
+  display: grid;
+  grid-template-columns: 2fr 1fr; /* Main chat area and a sidebar */
+  gap: 32px;
+  height: calc(100vh - 120px); /* Fill the available height */
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Chat Window (Center Column) */
+.chatContainer {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  overflow: hidden; /* Hide scrollbars of children */
+}
+
+.chatHeader {
+  background: linear-gradient(90deg, #4a6cfd, #6b8eff);
+  color: white;
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+}
+.chatHeader h3 {
+  margin: 0;
+  font-size: 18px;
+}
+.chatHeader p {
+  margin: 4px 0 0;
+  font-size: 14px;
+  opacity: 0.9;
+}
+.newChatBtn {
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.messagesWindow {
+  flex-grow: 1;
+  padding: 24px;
+  overflow-y: auto; /* Allow scrolling for messages */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Chat Input Form */
+.inputForm {
+  padding: 16px 24px;
+  border-top: 1px solid #e2e8f0;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.chatInput {
+  flex-grow: 1;
+  padding: 12px 16px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 15px;
+  background-color: #f7fafc;
+}
+.chatInput:focus {
+  outline: none;
+  border-color: #4a6cfd;
+}
+.sendBtn {
+  background-color: #2a65f1;
+  border: none;
+  color: white;
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+
+/* Right Sidebar */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+.sidebarCard {
+  background-color: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 20px;
+}
+.cardTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: #2d3748;
+  margin: 0 0 16px 0;
+}
+.languageSelect {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+.sampleQuestions,
+.legalTopics {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.sampleQuestionBtn,
+.topicTag {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background-color: #f7fafc;
+  cursor: pointer;
+  text-align: left;
+  transition: background-color 0.2s;
+}
+.sampleQuestionBtn:hover {
+  background-color: #e6efff;
+}
+
+.notice {
+  background-color: #fffbeb;
+  border: 1px solid #f9e2af;
+}
+.notice p {
+  margin: 0;
+  font-size: 13px;
+  color: #785a1a;
+  line-height: 1.6;
+}
+/* --- ADD THESE STYLES to AIAssistant.module.css --- */
+
+.typingIndicator {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 1.5rem;
+  background-color: #f7f9fc;
+}
+.typingIndicator span {
+  font-size: 0.875rem;
+  color: #718096;
+  font-style: italic;
+}
+
+/* --- Flashing Dot Animation --- */
+.dotFlashing {
+  position: relative;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #a0aec0;
+  color: #a0aec0;
+  animation: dotFlashing 1s infinite linear alternate;
+  animation-delay: 0.5s;
+}
+.dotFlashing::before,
+.dotFlashing::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 0;
+}
+.dotFlashing::before {
+  left: -10px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #a0aec0;
+  color: #a0aec0;
+  animation: dotFlashing 1s infinite alternate;
+  animation-delay: 0s;
+}
+.dotFlashing::after {
+  left: 10px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #a0aec0;
+  color: #a0aec0;
+  animation: dotFlashing 1s infinite alternate;
+  animation-delay: 1s;
+}
+@keyframes dotFlashing {
+  0% {
+    background-color: #a0aec0;
+  }
+  50%,
+  100% {
+    background-color: #e2e8f0;
+  }
+}

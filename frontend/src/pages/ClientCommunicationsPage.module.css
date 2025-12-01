@@ -1,0 +1,83 @@
+.wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  animation: fadeIn 0.5s ease-in-out;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.pageTitle {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #1a202c;
+  margin: 0;
+}
+.pageSubtitle {
+  font-size: 1rem;
+  color: #718096;
+  margin: 0.25rem 0 2rem 0;
+}
+
+.chatList {
+  background-color: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+.chatItem {
+  display: flex;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid #f1f5f9;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+.chatItem:last-child {
+  border-bottom: none;
+}
+.chatItem:hover {
+  background-color: #f7f9fc;
+}
+
+.chatIcon {
+  font-size: 1.5rem;
+  color: #2a65f1;
+  background-color: #e6efff;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.chatInfo {
+  flex-grow: 1;
+  margin: 0 1rem;
+}
+.clientName {
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: #2d3748;
+  margin: 0 0 0.25rem 0;
+}
+.caseTitle {
+  font-size: 0.875rem;
+  color: #718096;
+  margin: 0;
+}
+
+.arrowIcon {
+  font-size: 1.5rem;
+  color: #a0aec0;
+  flex-shrink: 0;
+}
+
+.errorText {
+  color: #721c24;
+  padding: 1.5rem;
+}

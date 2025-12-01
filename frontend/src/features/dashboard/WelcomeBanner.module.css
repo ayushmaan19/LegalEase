@@ -1,0 +1,52 @@
+.bannerContainer {
+  /* This is the exact gradient from your design */
+  background: linear-gradient(90deg, #4F65F1 0%, #764CF1 100%);
+  border-radius: 12px;
+  padding: 32px 40px; /* More padding */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+  margin-bottom: 32px; /* Space below the banner */
+  min-height: 160px; /* Set a min-height to match the design */
+}
+
+.bannerContent {
+  /* No styles needed here, but good for structure */
+}
+
+.bannerTitle {
+  font-size: 3rem; /* Large title */
+  font-weight: 600; /* Bold */
+  margin: 0;
+  line-height: 1.2;
+}
+
+.bannerSubtitle {
+  font-size: 17px;
+  font-weight: 400;
+  margin: 4px 0 0 0;
+  opacity: 0.9;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 12px;
+  margin-top: 22px; /* Space above buttons */
+}
+
+.bannerButton {
+  background-color: rgba(255, 255, 255, 0.15); /* Semi-transparent white */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  padding: 6px 16px; /* Pill-shaped buttons */
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+  white-space: nowrap;
+}
+
+.bannerButton:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+}

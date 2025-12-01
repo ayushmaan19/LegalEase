@@ -1,0 +1,46 @@
+/* --- Global Reset and Font Application --- */
+@import "react-big-calendar/lib/css/react-big-calendar.css";
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Apply Inter font globally */
+body {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased; /* This creates the "soft" look */
+  -moz-osx-font-smoothing: grayscale; /* This creates the "soft" look */
+  line-height: 1.5;
+  color: #2d3748; /* Set a default dark text color */
+  font-size: 25px; /* Set a default base size */
+  background-color: #f7f9fc; /* Set the light gray background globally */
+}
+
+/* Remove default styles */
+button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
