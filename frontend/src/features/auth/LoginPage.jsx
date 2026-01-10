@@ -5,6 +5,7 @@ import axios from 'axios';
 import styles from './Auth.module.css';
 import { GoogleLogin } from '@react-oauth/google';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
+import Auth3DScene from '../../components/common/Auth3DScene';
 
 const LoginPage = () => {
   const [identifier, setIdentifier] = useState('');
@@ -68,11 +69,17 @@ const LoginPage = () => {
     <div className={styles.authPage}>
       {/* --- Left Branding Column --- */}
       <div className={styles.brandingContainer}>
-        <div className={styles.logoCircle}>LN</div>
-        <h1 className={styles.brandingTitle}>Welcome Back to LegalEase</h1>
-        <p className={styles.brandingSubtitle}>
-          Sign in to access your dashboard, manage your cases, and connect with legal professionals.
-        </p>
+        {/* --- Subtle Background --- */}
+        <div className={styles.sceneContainer}>
+          <Auth3DScene />
+        </div>
+        <div className={styles.brandingContent}>
+          <div className={styles.logoCircle}>LE</div>
+          <h1 className={styles.brandingTitle}>Welcome back</h1>
+          <p className={styles.brandingSubtitle}>
+            Access your legal dashboard and stay connected with your cases.
+          </p>
+        </div>
       </div>
 
       {/* --- Right Form Column --- */}

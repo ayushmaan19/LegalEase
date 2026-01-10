@@ -98,6 +98,7 @@ const LawyerProfilePage = () => {
             <div className={styles.avatar}>{initials}</div>
             <h1 className={styles.lawyerName}>{user.name}</h1>
             {verified && <span className={styles.verifiedTag}><FiCheckCircle /> Verified Professional</span>}
+            {proBono && <span className={styles.proBonoTag}>Offers Pro Bono</span>}
           </div>
 
           <button className={styles.contactButton} onClick={handleContactClick}>

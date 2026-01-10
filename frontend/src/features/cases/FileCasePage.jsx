@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import axiosInstance from '../../api/axiosInstance';
 import styles from './FileCasePage.module.css'; // We will create this CSS file next
 import { FiFileText, FiType, FiGlobe, FiDollarSign } from 'react-icons/fi';
 
@@ -9,7 +9,7 @@ const FileCasePage = () => {
   const [description, setDescription] = useState('');
   const [caseType, setCaseType] = useState('');
   const [language, setLanguage] = useState('English');
-  const [amount, setAmount] = useState('₹under-5000');
+  const [amount, setAmount] = useState(5000);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   
@@ -21,16 +21,16 @@ const FileCasePage = () => {
     setSuccess('');
 
     // Validation
-    if (!title || !description || !caseType || !language || !amount) {
+    if (!title || !description || !caseType || !language) {
       setError('Please fill out all fields.');
       return;
     }
 
     try {
-      const caseData = { title, description, caseType, language, amount };
+      const caseData = { title, description, caseType, language, amount: Number(amount) };
       
-      // The token is already in axios headers from our AuthContext
-      const res = await axios.post('http://localhost:5001/api/cases', caseData);
+      // Use axiosInstance which includes auth token
+      const res = await axiosInstance.post('/cases', caseData);
 
       setSuccess('Case filed successfully! Redirecting you to your cases...');
       
@@ -123,18 +123,18 @@ const FileCasePage = () => {
           
           {/* Claim Amount */}
           <div className={styles.formGroup}>
-             <label htmlFor="amount"><FiDollarSign /> Estimated Claim Amount (if applicable)</label>
+             <label htmlFor="amount"><FiDollarSign /> Estimated Case Fee (₹)</label>
               <select 
                 id="amount" 
                 className={styles.formSelect}
                 value={amount}
-                onChange={(e) => setAmount(e.target.value)}
+                onChange={(e) => setAmount(Number(e.target.value))}
               >
-                <option value="₹under-5000">₹under-5000</option>
-                <option value="₹5000-50000">₹5,000 - ₹50,000</option>
-                <option value="₹50000-150000">₹50,000 - ₹1,50,000</option>
-                <option value="₹150000+">₹1,50,000+</option>
-                <option value="N/A">N/A (Not a monetary dispute)</option>
+                <option value={5000}>Up to ₹5,000</option>
+                <option value={25000}>₹5,000 - ₹50,000</option>
+                <option value={100000}>₹50,000 - ₹1,50,000</option>
+                <option value={200000}>₹1,50,000+</option>
+                <option value={10000}>₹10,000 (Standard)</option>
               </select>
           </div>
           

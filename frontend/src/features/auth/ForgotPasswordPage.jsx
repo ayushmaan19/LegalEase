@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import styles from './Auth.module.css';
+import Auth3DScene from '../../components/common/Auth3DScene';
 
 const ForgotPasswordPage = () => {
   const [email, setEmail] = useState('');
@@ -24,11 +25,17 @@ const ForgotPasswordPage = () => {
     <div className={styles.authPage}>
       {/* --- Left Branding Column --- */}
       <div className={styles.brandingContainer}>
-        <div className={styles.logoCircle}>LN</div>
-        <h1 className={styles.brandingTitle}>Forgot Your Password?</h1>
-        <p className={styles.brandingSubtitle}>
-          No problem. Enter your email address and we'll send you a link to reset it.
-        </p>
+        {/* --- Subtle Background --- */}
+        <div className={styles.sceneContainer}>
+          <Auth3DScene />
+        </div>
+        <div className={styles.brandingContent}>
+          <div className={styles.logoCircle}>LE</div>
+          <h1 className={styles.brandingTitle}>Forgot password?</h1>
+          <p className={styles.brandingSubtitle}>
+            No worries. We'll send you a link to reset it.
+          </p>
+        </div>
       </div>
 
       {/* --- Right Form Column --- */}

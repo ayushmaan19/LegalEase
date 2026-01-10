@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './Auth.module.css';
 import { FaUser, FaGavel } from 'react-icons/fa';
+import Auth3DScene from '../../components/common/Auth3DScene';
 
 const RoleSelectionPage = () => {
   const navigate = useNavigate();
@@ -15,11 +16,17 @@ const RoleSelectionPage = () => {
       
       {/* --- Left Branding Column --- */}
       <div className={styles.brandingContainer}>
-        <div className={styles.logoCircle}>LN</div>
-        <h1 className={styles.brandingTitle}>Join LegalEase</h1>
-        <p className={styles.brandingSubtitle}>
-          Bridging the gap between citizens and legal professionals. Start by selecting your role.
-        </p>
+        {/* --- Subtle Background --- */}
+        <div className={styles.sceneContainer}>
+          <Auth3DScene />
+        </div>
+        <div className={styles.brandingContent}>
+          <div className={styles.logoCircle}>LE</div>
+          <h1 className={styles.brandingTitle}>Join LegalEase</h1>
+          <p className={styles.brandingSubtitle}>
+            Select how you'd like to use our platform to get started.
+          </p>
+        </div>
       </div>
 
       {/* --- Right Form Column --- */}

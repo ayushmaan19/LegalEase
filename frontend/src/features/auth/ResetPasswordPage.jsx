@@ -4,6 +4,7 @@ import axios from 'axios';
 import styles from './Auth.module.css';
 import { FcGoogle } from 'react-icons/fc';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
+import Auth3DScene from '../../components/common/Auth3DScene';
 
 const ResetPasswordPage = () => {
   const [password, setPassword] = useState('');
@@ -44,11 +45,17 @@ const ResetPasswordPage = () => {
     <div className={styles.authPage}>
       {/* --- Left Branding Column --- */}
       <div className={styles.brandingContainer}>
-        <div className={styles.logoCircle}>LN</div>
-        <h1 className={styles.brandingTitle}>Set a New Password</h1>
-        <p className={styles.brandingSubtitle}>
-          Please enter a new, secure password for your account.
-        </p>
+        {/* --- Subtle Background --- */}
+        <div className={styles.sceneContainer}>
+          <Auth3DScene />
+        </div>
+        <div className={styles.brandingContent}>
+          <div className={styles.logoCircle}>LE</div>
+          <h1 className={styles.brandingTitle}>New password</h1>
+          <p className={styles.brandingSubtitle}>
+            Choose a strong password to secure your account.
+          </p>
+        </div>
       </div>
 
       {/* --- Right Form Column --- */}

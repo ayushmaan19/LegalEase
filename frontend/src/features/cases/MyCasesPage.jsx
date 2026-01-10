@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import axiosInstance from '../../api/axiosInstance';
 import styles from './MyCases.module.css';
 import { FiPlus } from 'react-icons/fi';
 import CaseCard from './CaseCard';
@@ -24,7 +24,7 @@ const MyCasesPage = () => {
     setLoading(true);
     setError('');
     try {
-      const res = await axios.get('http://localhost:5001/api/cases/mycases');
+      const res = await axiosInstance.get('/cases/mycases');
       setCases(res.data);
     } catch (err) {
       console.error('Failed to fetch cases', err);
@@ -40,7 +40,7 @@ const MyCasesPage = () => {
   // "Complete" handler (unchanged)
   const handleCompleteCase = async (caseId) => {
     try {
-      await axios.put(`http://localhost:5001/api/cases/complete/${caseId}`);
+      await axiosInstance.put(`/cases/complete/${caseId}`);
       fetchCases(); // Refresh the list
     } catch (err) {
       console.error('Failed to complete case', err);
@@ -51,7 +51,7 @@ const MyCasesPage = () => {
   // --- 1. ADD NEW "START WORK" HANDLER ---
   const handleStartWork = async (caseId) => {
     try {
-      await axios.put(`http://localhost:5001/api/cases/start/${caseId}`);
+      await axiosInstance.put(`/cases/start/${caseId}`);
       fetchCases(); // Refresh the list
     } catch (err) {
       console.error('Failed to start case', err);

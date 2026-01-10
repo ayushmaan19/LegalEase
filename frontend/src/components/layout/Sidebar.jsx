@@ -3,7 +3,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import styles from './Layout.module.css';
 import { RxDashboard } from 'react-icons/rx';
-import { FiMessageSquare, FiBriefcase, FiSearch, FiSettings, FiLogOut, FiDollarSign, FiCalendar } from 'react-icons/fi'; // <-- Added new icons
+import { FiMessageSquare, FiBriefcase, FiSearch, FiSettings, FiLogOut, FiDollarSign, FiCalendar, FiCreditCard } from 'react-icons/fi'; // <-- Added new icons
 import { useDetectOutsideClick } from '../../hooks/useDetectOutsideClick';
 import ConfirmationModal from '../common/ConfirmationModal';
 
@@ -60,11 +60,17 @@ const Sidebar = () => {
             <NavLink to="/my-cases" className={({ isActive }) => `${styles.navLink} ${isActive ? styles.active : ''}`}>
               <FiBriefcase /> My Cases
             </NavLink>
+            <NavLink to="/chats" className={({ isActive }) => `${styles.navLink} ${isActive ? styles.active : ''}`}>
+              <FiMessageSquare /> Messages
+            </NavLink>
             <NavLink to="/schedule" className={({ isActive }) => `${styles.navLink} ${isActive ? styles.active : ''}`}>
               <FiCalendar /> Scheduled Appointments
             </NavLink>
             <NavLink to="/payments" className={({ isActive }) => `${styles.navLink} ${isActive ? styles.active : ''}`}>
               <FiDollarSign /> Payments Earned
+            </NavLink>
+            <NavLink to="/subscription" className={({ isActive }) => `${styles.navLink} ${isActive ? styles.active : ''}`}>
+              <FiCreditCard /> Subscription
             </NavLink>
           </>
         ) : (
@@ -79,8 +85,14 @@ const Sidebar = () => {
             <NavLink to="/my-cases" className={({ isActive }) => `${styles.navLink} ${isActive ? styles.active : ''}`}>
               <FiBriefcase /> My Cases
             </NavLink>
+            <NavLink to="/chats" className={({ isActive }) => `${styles.navLink} ${isActive ? styles.active : ''}`}>
+              <FiMessageSquare /> Messages
+            </NavLink>
             <NavLink to="/find-lawyer" className={({ isActive }) => `${styles.navLink} ${isActive ? styles.active : ''}`}>
               <FiSearch /> Find a Lawyer
+            </NavLink>
+            <NavLink to="/payments" className={({ isActive }) => `${styles.navLink} ${isActive ? styles.active : ''}`}>
+              <FiDollarSign /> Invoices
             </NavLink>
           </>
         )}

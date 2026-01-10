@@ -40,8 +40,8 @@ const AIAssistantPage = () => {
     setIsAiTyping(true); 
 
     // --- Gemini API Call ---
-    const apiKey = process.env.REACT_APP_GOOGLE_API_KEY;
-    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+    const apiKey = import.meta.env.VITE_GOOGLE_API_KEY;
+    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
 
     const systemPrompt = `You are "LegalEase," a helpful and compassionate AI legal assistant. Your goal is to provide preliminary legal information and guidance to users in India. 
     You must not provide definitive legal advice or create a lawyer-client relationship. 

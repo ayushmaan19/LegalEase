@@ -18,9 +18,11 @@ import DummyLawyerProfilePage from './pages/DummyLawyerProfilePage';
 import ForgotPasswordPage from './features/auth/ForgotPasswordPage'; 
 import ResetPasswordPage from './features/auth/ResetPasswordPage';
 import ChatPage from './pages/ChatPage';
+import ChatsListPage from './pages/ChatsListPage';
 import ClientCommunicationsPage from './pages/ClientCommunicationsPage';
 import SchedulePage from './pages/SchedulePage'; 
 import PaymentsPage from './pages/PaymentsPage';
+import SubscriptionPage from './pages/SubscriptionPage';
 
 function App() {
   return (
@@ -44,10 +46,12 @@ function App() {
           <Route path="/file-new-case" element={<FileCasePage />} />
           <Route path="/lawyer/:id" element={<LawyerProfilePage />} />
           <Route path="/lawyer/dummy" element={<DummyLawyerProfilePage />} />
+          <Route path="/chats" element={<ChatsListPage />} />
           <Route path="/chat/:room" element={<ChatPage />} />
           <Route path="/communications" element={<ClientCommunicationsPage />} />
           <Route path="/schedule" element={<SchedulePage />} /> 
-          <Route path="/payments" element={<PaymentsPage />} /> 
+          <Route path="/payments" element={<PaymentsPage />} />
+          <Route path="/subscription" element={<SubscriptionPage />} />
         </Route>
       </Routes>
     </Router>

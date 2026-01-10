@@ -4,6 +4,7 @@ import { useAuth } from '../../context/AuthContext';
 import axios from 'axios';
 import styles from './Auth.module.css';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
+import Auth3DScene from '../../components/common/Auth3DScene';
 
 const SignupPage = () => {
   const [searchParams] = useSearchParams();
@@ -54,11 +55,17 @@ const SignupPage = () => {
     <div className={styles.authPage}>
       {/* --- Left Branding Column --- */}
       <div className={styles.brandingContainer}>
-        <div className={styles.logoCircle}>LN</div>
-        <h1 className={styles.brandingTitle}>Join the Future of Legal Access</h1>
-        <p className={styles.brandingSubtitle}>
-          Create your account to get AI-powered guidance and connect with a network of verified legal professionals.
-        </p>
+        {/* --- Subtle Background --- */}
+        <div className={styles.sceneContainer}>
+          <Auth3DScene />
+        </div>
+        <div className={styles.brandingContent}>
+          <div className={styles.logoCircle}>LE</div>
+          <h1 className={styles.brandingTitle}>Get started</h1>
+          <p className={styles.brandingSubtitle}>
+            Create your account and connect with legal professionals today.
+          </p>
+        </div>
       </div>
 
       {/* --- Right Form Column --- */}

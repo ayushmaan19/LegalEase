@@ -210,6 +210,8 @@ const router = express.Router();
 const { protect } = require("../middleware/authMiddleware");
 const Case = require("../models/Case");
 const User = require("../models/User");
+const Payment = require("../models/Payment");
+const Subscription = require("../models/Subscription");
 const sendEmail = require("../utils/sendEmail");
 const { getCaseAcceptedHTML } = require("../utils/emailTemplates");
 
@@ -364,9 +366,15 @@ router.put("/start/:id", protect, async (req, res) => {
     if (caseToStart.status !== "Assigned") {
       return res.status(400).json({ msg: "Case is not in Assigned state" });
     }
-    caseToStart.status = "In Progress";
-    await caseToStart.save();
-    res.json(caseToStart);
+
+    // Use findOneAndUpdate to avoid validation on existing fields
+    const updatedCase = await Case.findOneAndUpdate(
+      { _id: req.params.id, lawyer: req.user.id },
+      { $set: { status: "In Progress" } },
+      { new: true, runValidators: false }
+    );
+
+    res.json(updatedCase);
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server Error");
@@ -374,7 +382,7 @@ router.put("/start/:id", protect, async (req, res) => {
 });
 
 // @route   PUT /api/cases/complete/:id
-// @desc    Mark an assigned case as 'Resolved'
+// @desc    Mark an assigned case as 'Resolved' and create payment record
 // @access  Private (Lawyer only)
 router.put("/complete/:id", protect, async (req, res) => {
   if (req.user.role !== "lawyer") {
@@ -390,11 +398,107 @@ router.put("/complete/:id", protect, async (req, res) => {
         .status(404)
         .json({ msg: "Case not found or not assigned to you" });
     }
-    caseToComplete.status = "Resolved";
-    await caseToComplete.save();
-    res.json(caseToComplete);
+
+    // Use findOneAndUpdate to avoid validation on existing fields
+    const updatedCase = await Case.findOneAndUpdate(
+      { _id: req.params.id, lawyer: req.user.id },
+      { $set: { status: "Resolved", resolvedAt: new Date() } },
+      { new: true, runValidators: false }
+    );
+
+    // Create payment record if case has an amount
+    // Parse the amount - handle both number and string formats
+    let caseAmount = 0;
+    console.log(
+      "Case amount raw:",
+      caseToComplete.amount,
+      "Type:",
+      typeof caseToComplete.amount
+    );
+
+    if (caseToComplete.amount) {
+      if (typeof caseToComplete.amount === "number") {
+        caseAmount = caseToComplete.amount;
+      } else if (typeof caseToComplete.amount === "string") {
+        // Handle string formats like "₹under-5000", "₹150000+"
+        const amountStr = caseToComplete.amount.replace(/[₹,]/g, "");
+        if (amountStr.includes("under")) {
+          caseAmount = 5000; // Default for "under X"
+        } else if (amountStr.includes("+")) {
+          caseAmount =
+            parseInt(amountStr.replace("+", "").replace(/\D/g, "")) || 150000;
+        } else {
+          caseAmount = parseInt(amountStr.replace(/\D/g, "")) || 0;
+        }
+      }
+    }
+
+    // If no amount set, use a default for testing (can be removed in production)
+    if (caseAmount === 0) {
+      caseAmount = 10000; // Default ₹10,000 for cases without amount
+    }
+
+    console.log("Parsed case amount:", caseAmount);
+
+    // Check if payment already exists for this case
+    const existingPayment = await Payment.findOne({ case: req.params.id });
+    console.log("Existing payment:", existingPayment ? "Yes" : "No");
+
+    if (!existingPayment) {
+      // Get lawyer's subscription to determine commission rate
+      let commissionRate = 20; // Default 20% for free tier
+      const subscription = await Subscription.findOne({
+        user: req.user.id,
+        status: "active",
+      });
+      if (subscription) {
+        commissionRate = subscription.commissionRate;
+      }
+      console.log("Commission rate:", commissionRate);
+
+      // Calculate payment breakdown
+      const advancePercentage = 30;
+      const advanceAmount = Math.round(caseAmount * (advancePercentage / 100));
+      const remainingAmount = caseAmount - advanceAmount;
+      const commissionAmount = Math.round(caseAmount * (commissionRate / 100));
+      const gstRate = 18;
+      const gstAmount = Math.round(commissionAmount * (gstRate / 100));
+      const lawyerEarnings = caseAmount - commissionAmount - gstAmount;
+
+      console.log("Creating payment with earnings:", lawyerEarnings);
+
+      // Create payment record
+      const payment = new Payment({
+        case: req.params.id,
+        citizen: caseToComplete.user,
+        lawyer: req.user.id,
+        totalAmount: caseAmount,
+        advanceAmount: advanceAmount,
+        advancePaid: false,
+        remainingAmount: remainingAmount,
+        commissionRate: commissionRate,
+        commissionAmount: commissionAmount,
+        lawyerEarnings: lawyerEarnings,
+        gstRate: gstRate,
+        gstAmount: gstAmount,
+        status: "to-be-released",
+        releaseEligibleDate: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000), // 7 days from now
+      });
+
+      await payment.save();
+      console.log("Payment created with ID:", payment._id);
+
+      // Link payment to case
+      await Case.findOneAndUpdate(
+        { _id: req.params.id },
+        { $set: { payment: payment._id, paymentStatus: "to-be-released" } },
+        { runValidators: false }
+      );
+    }
+
+    res.json(updatedCase);
   } catch (err) {
-    console.error(err.message);
+    console.error("Error completing case:", err.message);
     res.status(500).send("Server Error");
   }
 });

@@ -73,6 +73,19 @@
   padding: 0.25rem 0.75rem;
   border-radius: 1rem;
 }
+
+.proBonoTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #0a5d2c;
+  background-color: #c3e6cb;
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  margin-left: 0.5rem;
+}
 .contactButton {
   width: 100%;
   background-color: #2a65f1;
